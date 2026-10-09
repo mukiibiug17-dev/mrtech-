@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MR Tech Solutions | Cybersecurity &amp; Digital Forensics</title>
+<meta name="description" content="MR Tech Solutions provides cybersecurity services, incident response, digital forensics, and camera and network installation for individuals and organisations.">
+<meta name="theme-color" content="#0b1220">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MR Tech Solutions | Cybersecurity &amp; Digital Forensics">
+<meta property="og:description" content="Cybersecurity, digital forensics, and camera and network installation. Ask our AI assistant your questions.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<style>
+  :root {
+    --bg: #0b1220; --bg2: #0e172a; --panel: #111a2e; --panel2: #16213a;
+    --text: #e6edf7; --muted: #9fb0cc; --accent: #22d3a6; --accent2: #3b82f6; --border: #22304d;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { line-height: 1.2; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0 0 10px; }
+  .sub { color: var(--muted); margin: 0 0 34px; max-width: 640px; }
+  .eyebrow { color: var(--accent); font-weight: 700; font-size: .8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+  section { padding: 72px 0; }
+  .alt { background: var(--bg2); }
+
+  /* Header */
+  header { position: sticky; top: 0; z-index: 20; background: rgba(11,18,32,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 66px; gap: 16px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.1rem; }
+  .logo span { color: var(--accent); }
+  .menu { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
+  .menu a { color: var(--muted); font-size: .95rem; }
+  .menu a:hover { color: var(--text); }
+  .burger { display: none; background: none; border: 1px solid var(--border); color: var(--text); border-radius: 8px; padding: 6px 10px; font-size: 1.2rem; cursor: pointer; }
+
+  .btn { display: inline-block; padding: 12px 22px; border-radius: 10px; font-weight: 600; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+  .btn-primary { background: var(--accent); color: #05231b; }
+  .btn-primary:hover { filter: brightness(1.08); }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); background: transparent; }
+  .btn-ghost:hover { border-color: var(--accent); }
+
+  /* Hero */
+  .hero { padding: 96px 0 80px; background: radial-gradient(900px 400px at 85% 0%, rgba(34,211,166,.12), transparent 60%), radial-gradient(700px 400px at 0% 20%, rgba(59,130,246,.12), transparent 60%); }
+  .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.7rem); margin: 0 0 18px; max-width: 800px; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p { color: var(--muted); max-width: 620px; font-size: 1.12rem; margin: 0; }
+  .cta { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-top: 56px; max-width: 760px; }
+  .stat { border-left: 3px solid var(--accent); padding-left: 14px; }
+  .stat b { display: block; font-size: 1.5rem; }
+  .stat span { color: var(--muted); font-size: .9rem; }
+
+  /* Cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 24px; transition: transform .15s, border-color .15s; }
+  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .card .ico { width: 42px; height: 42px; border-radius: 10px; background: rgba(34,211,166,.12); display: grid; place-items: center; margin-bottom: 14px; font-size: 1.3rem; }
+  .card h3 { margin: 0 0 8px; font-size: 1.1rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  /* Process */
+  .steps { counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .step { position: relative; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+  .step::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: #05231b; font-weight: 800; margin-bottom: 12px; }
+  .step h3 { margin: 0 0 6px; font-size: 1.05rem; }
+  .step p { margin: 0; color: var(--muted); font-size: .94rem; }
+
+  /* FAQ */
+  details { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { color: var(--muted); margin: 10px 0 0; }
+
+  /* About + contact */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .checks { list-style: none; padding: 0; margin: 18px 0 0; }
+  .checks li { padding-left: 28px; position: relative; margin-bottom: 10px; color: var(--muted); }
+  .checks li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
+  .info p { margin: 0 0 8px; color: var(--muted); }
+  .info strong { color: var(--text); }
+  .contact-form { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+  label { display: block; font-size: .88rem; color: var(--muted); margin: 0 0 6px; }
+  .field { margin-bottom: 16px; }
+  .field input, .field select, .field textarea { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 10px; padding: 12px 14px; font-size: 1rem; font-family: inherit; }
+  .field textarea { min-height: 120px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  .thanks { display: none; color: var(--accent); margin-top: 14px; font-weight: 600; }
+
+  footer { border-top: 1px solid var(--border); padding: 34px 0; color: var(--muted); font-size: .9rem; }
+  .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+
+  .logo-tile { background: #f4f8fb; border-radius: 9px; padding: 3px 5px; display: grid; place-items: center; }
+  .logo-tile img { height: 32px; width: auto; display: block; }
+  .hero-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 44px; align-items: center; }
+  .hero-logo { background: #f7f9fb; border-radius: 22px; padding: 18px; box-shadow: 0 24px 70px rgba(0,0,0,.45); }
+  .hero-logo img { width: 100%; height: auto; display: block; }
+  .profile { display: grid; grid-template-columns: 320px 1fr; gap: 48px; align-items: start; }
+  .photo { border-radius: 22px; overflow: hidden; border: 2px solid var(--accent); background: #fff; aspect-ratio: 4 / 5; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .pname { font-size: 1.5rem; font-weight: 800; margin: 4px 0 2px; }
+  .role { color: var(--accent); font-weight: 700; margin: 0 0 16px; }
+  .pgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 24px; }
+  .pgrid .card { padding: 18px 20px; }
+  .pgrid .card:hover { transform: none; }
+  .pgrid h3 { font-size: 1rem; margin: 0 0 10px; color: var(--accent); }
+  .pgrid ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: .93rem; }
+  .pgrid li { margin-bottom: 4px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .tags span { border: 1px solid var(--border); border-radius: 20px; padding: 3px 11px; font-size: .84rem; color: var(--muted); }
+    .info a { color: var(--accent); }
+  .slider { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); background: #050a14; aspect-ratio: 16 / 9; max-height: 580px; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+  .slides { display: flex; height: 100%; transition: transform .6s ease; }
+  .slide { min-width: 100%; height: 100%; position: relative; overflow: hidden; }
+  .slide .bg { position: absolute; inset: -30px; width: calc(100% + 60px); height: calc(100% + 60px); object-fit: cover; filter: blur(26px) brightness(.45); }
+  .slide .main { position: relative; width: 100%; height: 100%; object-fit: contain; display: block; }
+  .slide .main.cover { object-fit: cover; }
+  .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 24px 22px; background: linear-gradient(transparent, rgba(5,10,20,.9)); }
+  .cap small { display: block; color: var(--accent); font-weight: 700; font-size: .75rem; letter-spacing: 1.4px; text-transform: uppercase; }
+  .cap b { display: block; font-size: 1.15rem; margin-top: 2px; }
+  .arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: rgba(11,18,32,.65); color: #fff; font-size: 1.1rem; cursor: pointer; }
+  .arrow:hover { background: var(--accent); color: #05231b; }
+  .prev { left: 14px; } .next { right: 14px; }
+  .dots { position: absolute; right: 22px; bottom: 24px; display: flex; gap: 8px; }
+  .dots button { width: 10px; height: 10px; border-radius: 50%; border: 0; padding: 0; background: rgba(255,255,255,.4); cursor: pointer; }
+  .dots button.on { background: var(--accent); width: 24px; border-radius: 6px; }
+  @media (max-width: 800px) { .slider { aspect-ratio: 1 / 1; } .cap b { font-size: 1rem; } .dots { display: none; } .arrow { width: 38px; height: 38px; } }
+  :root { --sky: #29b6e8; --violet: #8b5cf6; --amber: #f59e0b; --rose: #f43f5e; --wa: #25d366; }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), var(--sky)); }
+  .hero { background: radial-gradient(900px 400px at 85% 0%, rgba(34,211,166,.14), transparent 60%), radial-gradient(700px 400px at 0% 20%, rgba(59,130,246,.14), transparent 60%), radial-gradient(600px 300px at 50% 100%, rgba(139,92,246,.10), transparent 60%); }
+  .hero h1 em { background: linear-gradient(90deg, var(--accent), var(--sky)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .stat:nth-child(2) { border-color: var(--sky); } .stat:nth-child(3) { border-color: var(--violet); }
+
+  /* colour-coded cards */
+  #services .card { border-top: 3px solid var(--c, var(--border)); }
+  #services .card .ico { background: var(--cbg, rgba(34,211,166,.12)); }
+  #services .card:nth-child(1) { --c: #22d3a6; --cbg: rgba(34,211,166,.15); }
+  #services .card:nth-child(2) { --c: #f43f5e; --cbg: rgba(244,63,94,.15); }
+  #services .card:nth-child(3) { --c: #3b82f6; --cbg: rgba(59,130,246,.15); }
+  #services .card:nth-child(4) { --c: #f59e0b; --cbg: rgba(245,158,11,.15); }
+  #services .card:nth-child(5) { --c: #8b5cf6; --cbg: rgba(139,92,246,.15); }
+  #services .card:nth-child(6) { --c: #29b6e8; --cbg: rgba(41,182,232,.15); }
+  #services .card:nth-child(7) { --c: #25d366; --cbg: rgba(37,211,102,.15); }
+  .step:nth-child(2)::before { background: var(--sky); } .step:nth-child(3)::before { background: var(--violet); color: #fff; } .step:nth-child(4)::before { background: var(--amber); }
+  .pgrid .card:nth-child(1) h3 { color: var(--accent); } .pgrid .card:nth-child(2) h3 { color: var(--sky); }
+  .pgrid .card:nth-child(3) h3 { color: var(--violet); } .pgrid .card:nth-child(4) h3 { color: var(--amber); }
+
+  /* AI chat */
+  .chat { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; height: 600px; box-shadow: 0 24px 70px rgba(0,0,0,.4); }
+  .chat-head { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: linear-gradient(135deg, #123a63, #16213a); border-bottom: 1px solid var(--border); }
+  .avatar { width: 40px; height: 40px; border-radius: 12px; background: #f4f8fb; display: grid; place-items: center; flex: none; }
+  .avatar img { height: 28px; width: auto; display: block; }
+  .chat-head .who { flex: 1; min-width: 0; }
+  .chat-head b { display: block; font-size: 1rem; }
+  .chat-head small { color: var(--muted); display: flex; align-items: center; gap: 6px; font-size: .8rem; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(34,211,166,.25); }
+  .iconbtn { background: transparent; border: 1px solid rgba(255,255,255,.2); color: var(--muted); border-radius: 10px; padding: 6px 12px; cursor: pointer; font-size: .85rem; font-family: inherit; }
+  .iconbtn:hover { color: var(--text); border-color: var(--accent); }
+  .msgs { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 12px; background: var(--bg2); }
+  .msg { max-width: 86%; padding: 11px 15px; border-radius: 16px; font-size: .96rem; word-wrap: break-word; overflow-wrap: anywhere; line-height: 1.55; }
+  .msg.bot { background: var(--panel2); border: 1px solid var(--border); align-self: flex-start; border-bottom-left-radius: 4px; }
+  .msg.user { background: linear-gradient(135deg, var(--accent2), var(--violet)); align-self: flex-end; border-bottom-right-radius: 4px; white-space: pre-wrap; }
+  .msg.err { border-color: var(--rose); }
+  .msg p { margin: 0 0 8px; } .msg p:last-child { margin-bottom: 0; }
+  .msg ul { margin: 6px 0; padding-left: 20px; } .msg li { margin-bottom: 3px; }
+  .msg code { background: rgba(255,255,255,.1); border-radius: 5px; padding: 1px 6px; font-size: .9em; }
+  .typing span { display: inline-block; width: 7px; height: 7px; margin: 0 2px; border-radius: 50%; background: var(--muted); animation: blink 1.2s infinite; }
+  .typing span:nth-child(2) { animation-delay: .2s; } .typing span:nth-child(3) { animation-delay: .4s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
+  .suggest { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 18px; border-top: 1px solid var(--border); background: var(--panel); }
+  .suggest button { background: transparent; color: var(--muted); border: 1px solid var(--border); border-radius: 20px; padding: 6px 13px; font-size: .84rem; cursor: pointer; font-family: inherit; }
+  .suggest button:hover { color: var(--text); border-color: var(--sky); }
+  .chat form { display: flex; gap: 10px; padding: 14px; border-top: 1px solid var(--border); background: var(--panel); }
+  .chat input { flex: 1; min-width: 0; background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 10px; padding: 12px 14px; font-size: 1rem; font-family: inherit; }
+  .note { text-align: center; color: var(--muted); font-size: .8rem; margin: 14px auto 0; max-width: 700px; }
+
+  /* contact + social */
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .check { display: flex; gap: 10px; align-items: flex-start; font-size: .88rem; color: var(--muted); margin-bottom: 16px; }
+  .check input { width: auto; margin-top: 4px; accent-color: var(--accent); }
+  .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-wa { background: var(--wa); color: #04210f; }
+  .btn-wa:hover { filter: brightness(1.08); }
+  .status { margin-top: 14px; font-weight: 600; color: var(--accent); display: none; }
+  .social { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+  .soc { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border); background: var(--panel); border-radius: 10px; padding: 9px 14px; color: var(--text) !important; font-weight: 600; font-size: .92rem; }
+  .soc:hover { border-color: var(--accent); }
+  .soc svg, .fab svg { width: 18px; height: 18px; fill: currentColor; flex: none; }
+  .foot-links a { color: var(--muted); } .foot-links a:hover { color: var(--accent); }
+
+  /* floating buttons */
+  .float { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 10px; z-index: 30; align-items: flex-end; }
+  .fab { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 30px; font-weight: 700; font-size: .92rem; box-shadow: 0 8px 24px rgba(0,0,0,.45); }
+  .fab.wa { background: var(--wa); color: #04210f; }
+  .fab.ai { background: linear-gradient(135deg, var(--accent), var(--sky)); color: #05231b; }
+  @media (max-width: 520px) { .fab span { display: none; } .fab { padding: 13px; } }
+  @media (max-width: 800px) { .row2 { grid-template-columns: 1fr; gap: 0; } .chat { height: 72vh; } }
+  @media (max-width: 800px) {
+    .two { grid-template-columns: 1fr; gap: 28px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-logo { max-width: 300px; }
+    .profile { grid-template-columns: 1fr; gap: 28px; }
+    .photo { max-width: 300px; }
+    .burger { display: block; }
+    .menu { display: none; position: absolute; top: 66px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); flex-direction: column; gap: 0; padding: 8px 20px 16px; }
+    .menu.open { display: flex; }
+    .menu a { display: block; padding: 12px 0; }
+    .nav-cta { display: none; }
+    .chat { height: 70vh; }
+    section { padding: 56px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="logo" aria-label="MR Tech Solutions home">
+        <span class="logo-tile"><img src="images/shield.png" alt="" width="30" height="34"></span>
+        <div>MR <span>Tech</span> Solutions</div>
+      </a>
+      <ul class="menu" id="menu">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Our work</a></li>
+        <li><a href="#ai">AI Assistant</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#about">Profile</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary nav-cta">Get in touch</a>
+      <button class="burger" id="burger" aria-label="Open menu">☰</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+      <div class="eyebrow">Cybersecurity &middot; Digital Forensics &middot; Installations</div>
+      <h1>Protect your business. <em>Investigate with confidence.</em></h1>
+      <p>MR Tech Solutions helps individuals and organisations defend against cyber threats, respond to incidents, recover digital evidence that stands up to scrutiny, and install camera and network systems that are secure from day one.</p>
+      <div class="cta">
+        <a href="#contact" class="btn btn-primary">Request a consultation</a>
+        <a href="#services" class="btn btn-ghost">Explore services</a>
+        <a href="#ai" class="btn btn-ghost">Ask our AI</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>24/7</b><span>Incident support</span></div>
+        <div class="stat"><b>Confidential</b><span>Every engagement</span></div>
+        <div class="stat"><b>Practical</b><span>Plain-language reports</span></div>
+      </div>
+      </div>
+      <div class="hero-logo"><img src="images/logo.png" alt="MR Tech Solutions logo: a blue shield with a padlock" width="1000" height="1053"></div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="eyebrow">Services</div>
+      <h2>What we do</h2>
+      <p class="sub">Security and investigation services built around your real risks, explained without jargon.</p>
+      <div class="grid">
+        <div class="card"><div class="ico">🛡️</div><h3>Security Assessments</h3><p>We test your networks, systems and web applications to find weaknesses before attackers do, and give you a clear fix list.</p></div>
+        <div class="card"><div class="ico">🚨</div><h3>Incident Response</h3><p>Fast containment, investigation and recovery when you face a breach, ransomware, or account takeover.</p></div>
+        <div class="card"><div class="ico">🔍</div><h3>Digital Forensics</h3><p>Careful evidence collection and analysis from computers, phones and networks, with a documented chain of custody.</p></div>
+        <div class="card"><div class="ico">🎓</div><h3>Security Awareness Training</h3><p>Practical sessions that help your team spot phishing, scams and social engineering.</p></div>
+        <div class="card"><div class="ico">📋</div><h3>Policies &amp; Compliance</h3><p>Security policies, risk assessments and guidance to help you meet your legal and industry requirements.</p></div>
+        <div class="card"><div class="ico">☁️</div><h3>Cloud &amp; Network Security</h3><p>Secure configuration, monitoring and hardening for your cloud accounts, email and office networks.</p></div>
+        <div class="card"><div class="ico">📹</div><h3>Camera &amp; Network Installation</h3><p>CCTV camera systems, structured cabling, Wi-Fi and outdoor network setups, installed neatly and secured from the start.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="alt">
+    <div class="wrap">
+      <div class="eyebrow">Our work</div>
+      <h2>Security, forensics and installations</h2>
+      <p class="sub">From protecting networks to installing them: a look at what we do.</p>
+
+      <div class="slider" id="slider" role="region" aria-roledescription="carousel" aria-label="Our work">
+        <div class="slides" id="slides">
+          <div class="slide"><img class="main cover" src="images/slide-cyber.svg" alt="Illustration of a shield with a padlock protecting a network"><div class="cap"><small>Cybersecurity</small><b>Protecting your systems, data and people</b></div></div>
+          <div class="slide"><img class="bg" src="images/work-1.jpg" alt="" aria-hidden="true" loading="lazy"><img class="main" src="images/work-1.jpg" alt="Technician in a high-visibility vest on a ladder installing network equipment under a roof" loading="lazy"><div class="cap"><small>Camera &amp; network installation</small><b>Network equipment installation on site</b></div></div>
+          <div class="slide"><img class="main cover" src="images/slide-forensics.svg" alt="Illustration of a hard disk and a magnifying glass examining a fingerprint" loading="lazy"><div class="cap"><small>Digital forensics</small><b>Evidence recovery and careful analysis</b></div></div>
+          <div class="slide"><img class="bg" src="images/work-2.jpg" alt="" aria-hidden="true" loading="lazy"><img class="main" src="images/work-2.jpg" alt="Technician in a high-visibility vest testing a cable connection in a compound while a colleague works on a ladder" loading="lazy"><div class="cap"><small>Camera &amp; network installation</small><b>Setup and testing at the client's premises</b></div></div>
+          <div class="slide"><img class="main cover" src="images/slide-threat.svg" alt="Illustration of a radar screen detecting threats beside monitoring panels" loading="lazy"><div class="cap"><small>Incident response</small><b>Detecting and containing threats fast</b></div></div>
+          <div class="slide"><img class="bg" src="images/work-3.jpg" alt="" aria-hidden="true" loading="lazy"><img class="main" src="images/work-3.jpg" alt="Technician climbing a utility pole with safety gear to run cables" loading="lazy"><div class="cap"><small>Camera &amp; network installation</small><b>Outdoor cabling and pole work</b></div></div>
+          <div class="slide"><img class="bg" src="images/work-4.jpg" alt="" aria-hidden="true" loading="lazy"><img class="main" src="images/work-4.jpg" alt="Technician on a ladder against a pole fixing overhead cables" loading="lazy"><div class="cap"><small>Camera &amp; network installation</small><b>Cable installation at height</b></div></div>
+          <div class="slide"><img class="bg" src="images/work-5.jpg" alt="" aria-hidden="true" loading="lazy"><img class="main" src="images/work-5.jpg" alt="Technician in a high-visibility vest preparing a cable connection indoors" loading="lazy"><div class="cap"><small>Camera &amp; network installation</small><b>Cable termination and connections</b></div></div>
+        </div>
+        <button class="arrow prev" id="prev" aria-label="Previous slide">&#10094;</button>
+        <button class="arrow next" id="next" aria-label="Next slide">&#10095;</button>
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="eyebrow">How we work</div>
+      <h2>A simple, clear process</h2>
+      <p class="sub">You always know what is happening and what comes next.</p>
+      <div class="steps">
+        <div class="step"><h3>Talk to us</h3><p>Tell us what you need or what went wrong. We listen first and keep everything confidential. I also design and install camera and network systems so your premises and data are secured from day one.</p></div>
+        <div class="step"><h3>Assess</h3><p>We examine your systems or evidence and identify the risks or the facts of the case.</p></div>
+        <div class="step"><h3>Act</h3><p>We contain threats, fix weaknesses, or prepare findings you can rely on.</p></div>
+        <div class="step"><h3>Report &amp; support</h3><p>You receive a plain-language report with clear next steps, and continued support after.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai" class="alt">
+    <div class="wrap">
+      <div class="eyebrow" style="text-align:center">AI assistant</div>
+      <h2 style="text-align:center">Ask our AI security assistant</h2>
+      <p class="sub" style="text-align:center;margin-left:auto;margin-right:auto">Get clear answers about cybersecurity, digital forensics and camera and network installation, any time of day.</p>
+
+      <div class="chat" id="chat">
+        <div class="chat-head">
+          <div class="avatar"><img src="images/shield.png" alt=""></div>
+          <div class="who"><b>MR Tech AI Assistant</b><small><span class="dot"></span> Online &middot; Cybersecurity &amp; Forensics</small></div>
+          <button type="button" class="iconbtn" id="clearChat" title="Start a new conversation">New chat</button>
+        </div>
+        <div class="msgs" id="msgs" aria-live="polite"></div>
+        <div class="suggest" id="suggest">
+          <button type="button">How do I spot a phishing email?</button>
+          <button type="button">How do I secure my WhatsApp and mobile money?</button>
+          <button type="button">I think I have been hacked. What do I do?</button>
+          <button type="button">What is chain of custody?</button>
+          <button type="button">Can deleted data be recovered?</button>
+          <button type="button">What does CCTV installation involve?</button>
+        </div>
+        <form id="chatForm">
+          <input id="input" type="text" placeholder="Type your question..." autocomplete="off" maxlength="1000" required aria-label="Your question">
+          <button class="btn btn-primary" id="send" type="submit">Send</button>
+        </form>
+      </div>
+      <p class="note">AI answers are general guidance, not legal or professional advice. Please do not share passwords, PINs or other private details in the chat. For urgent incidents, call or WhatsApp 0745 558 572.</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="eyebrow">FAQ</div>
+      <h2>Common questions</h2>
+      <p class="sub">Quick answers before you get in touch.</p>
+      <div style="max-width:780px">
+        <details><summary>What should I do if I think I've been hacked?</summary><p>Disconnect the affected device from the internet, do not switch it off or delete anything, change your passwords from a different clean device, and contact us. Keeping everything as it is helps preserve evidence.</p></details>
+        <details><summary>Is my information kept confidential?</summary><p>Yes. Every engagement is handled confidentially, and we only access what is needed for the work you ask us to do.</p></details>
+        <details><summary>Can your digital forensics work be used in court?</summary><p>We follow careful evidence-handling practices including a documented chain of custody. Legal requirements differ by country, so we recommend involving your lawyer early.</p></details>
+        <details><summary>Do you work with small businesses and individuals?</summary><p>Yes. We support individuals, small businesses and larger organisations, and tailor our services to your size and budget.</p></details>
+        <details><summary>Do you install CCTV cameras and networks?</summary><p>Yes. We install CCTV camera systems, structured cabling, Wi-Fi and outdoor network connections, and set them up with security in mind so they are not an easy target.</p></details>
+        <details><summary>How do I get a quote?</summary><p>Use the contact form below and describe what you need. We will reply with next steps and an estimate.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="alt">
+    <div class="wrap">
+      <div class="eyebrow">Profile</div>
+      <h2>Meet the analyst behind MR Tech Solutions</h2>
+      <p class="sub">Hands-on cybersecurity and digital forensics expertise, explained in plain language.</p>
+      <div class="profile">
+        <div class="photo"><img src="images/profile.jpg" alt="Portrait of the founder and lead analyst of MR Tech Solutions" width="638" height="820"></div>
+        <div>
+          
+          <div class="pname">MUKIIBI RONALD</div>
+          <p class="role">Cybersecurity &amp; Digital Forensics Analyst &middot; Founder, MR Tech Solutions</p>
+          <p style="color:var(--muted);margin:0 0 12px">I help individuals and organisations protect their systems, respond quickly when something goes wrong, and recover and present digital evidence properly. My approach is practical and honest: find the real risks, explain them clearly, and fix what matters most.</p>
+          <p style="color:var(--muted);margin:0">Whether it is a suspicious email, a compromised account, a ransomware attack or an investigation that needs careful evidence handling, I work with you step by step and keep everything confidential.</p>
+
+          <div class="pgrid">
+            <div class="card">
+              <h3>Cybersecurity</h3>
+              <ul>
+                <li>Threat protection &amp; monitoring</li>
+                <li>Vulnerability &amp; risk assessment</li>
+                <li>Incident response &amp; recovery</li>
+                <li>Security policies &amp; awareness training</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Digital Forensics</h3>
+              <ul>
+                <li>Evidence acquisition &amp; chain of custody</li>
+                <li>Computer, mobile &amp; network analysis</li>
+                <li>Data recovery</li>
+                <li>Clear forensic reporting</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Tools &amp; technologies</h3>
+              <!-- EDIT: keep only the tools you really use -->
+              <div class="tags"><span>Wireshark</span><span>Nmap</span><span>Autopsy</span><span>FTK Imager</span><span>Volatility</span><span>Burp Suite</span><span>Kali Linux</span></div>
+            </div>
+            <div class="card">
+              <h3>Camera &amp; network installation</h3>
+              <ul>
+                <li>CCTV camera installation</li>
+                <li>Network &amp; structured cabling</li>
+                <li>Wi-Fi &amp; antenna setup</li>
+                <li>Neat, secure outdoor cabling</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="cta" style="margin-top:26px">
+            <a href="#contact" class="btn btn-primary">Work with me</a>
+            <a href="tel:+256745558572" class="btn btn-ghost">Call 0745 558 572</a>
+            <a href="https://www.tiktok.com/@mrtechsolutions12" target="_blank" rel="noopener" class="btn btn-ghost">Follow on TikTok</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap two">
+      <div class="info">
+        <div class="eyebrow">Contact</div>
+        <h2>Let's talk</h2>
+        <p class="sub" style="margin-bottom:22px">Tell us what you need and we will get back to you. For emergencies, call or WhatsApp straight away.</p>
+        <p><strong>Phone / WhatsApp:</strong> <a href="tel:+256745558572">0745 558 572</a></p>
+        <p><strong>Email:</strong> <a href="mailto:mukiibronald@gmail.com">mukiibronald@gmail.com</a></p>
+        <p><strong>TikTok:</strong> <a href="https://www.tiktok.com/@mrtechsolutions12" target="_blank" rel="noopener">@mrtechsolutions12</a></p>
+        <p><strong>Location:</strong> Kampala, Uganda</p>
+        <p><strong>Hours:</strong> Mon to Fri, 8am to 6pm. Emergency incidents 24/7.</p>
+        <div class="social">
+          <a class="soc" href="https://www.tiktok.com/@mrtechsolutions12" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="18" r="3.2"/><rect x="10.4" y="3" width="2.4" height="15"/><path d="M12.8 3c.4 2.6 2 4.4 4.7 4.8v2.6c-1.8 0-3.4-.6-4.7-1.7z"/></svg>TikTok</a>
+          <a class="soc" href="https://wa.me/256745558572?text=Hello%20MR%20Tech%20Solutions" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>WhatsApp</a>
+          <a class="soc" href="mailto:mukiibronald@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v.5l-10 6.5L2 6.5V6a1 1 0 0 1 1-1zm-1 4.1l10 6.4 10-6.4V18a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/></svg>Email</a>
+          <a class="soc" href="tel:+256745558572"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3h3l1.5 4.5-2 1.5a11 11 0 0 0 5.9 5.9l1.500-2L21 14.400v3A2.600 2.600 0 0 1 18.400 20 15.400 15.400 0 0 1 4 5.600 2.600 2.600 0 0 1 6.600 3z"/></svg>Call</a>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+        <div class="row2">
+          <div class="field"><label for="name">Your name *</label><input id="name" name="name" required autocomplete="name"></div>
+          <div class="field"><label for="phone">Phone / WhatsApp *</label><input id="phone" name="phone" type="tel" required autocomplete="tel" placeholder="07XX XXX XXX"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email"></div>
+          <div class="field"><label for="org">Business / organisation (optional)</label><input id="org" name="organisation" autocomplete="organization"></div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="topic">Service needed</label>
+            <select id="topic" name="service">
+              <option>Security assessment</option>
+              <option>Incident response</option>
+              <option>Digital forensics</option>
+              <option>Camera / network installation</option>
+              <option>Security awareness training</option>
+              <option>Policies &amp; compliance</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="urgency">How urgent is it?</label>
+            <select id="urgency" name="urgency">
+              <option>Not urgent</option>
+              <option>Within a week</option>
+              <option>Urgent: active incident or emergency</option>
+            </select>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="pref">Best way to reach you</label>
+            <select id="pref" name="preferred_contact">
+              <option>WhatsApp</option>
+              <option>Phone call</option>
+              <option>Email</option>
+            </select>
+          </div>
+          <div class="field"><label for="where">Your location (town / area)</label><input id="where" name="location"></div>
+        </div>
+        <div class="field"><label for="message">Tell us what you need *</label><textarea id="message" name="message" required></textarea></div>
+        <label class="check"><input type="checkbox" name="consent" required> <span>I agree that MR Tech Solutions may contact me about this enquiry. I will not include passwords or PINs in my message.</span></label>
+        <div class="btns">
+          <button class="btn btn-primary" type="submit">Send message</button>
+          <button class="btn btn-wa" type="button" id="waBtn">Send on WhatsApp</button>
+        </div>
+        <div class="status" id="status" role="status"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>&copy; <span id="year"></span> MR Tech Solutions. All rights reserved.</div>
+    <div class="foot-links"><a href="https://www.tiktok.com/@mrtechsolutions12" target="_blank" rel="noopener">TikTok</a> &nbsp;&middot;&nbsp; <a href="https://wa.me/256745558572" target="_blank" rel="noopener">WhatsApp</a> &nbsp;&middot;&nbsp; <a href="mailto:mukiibronald@gmail.com">Email</a> &nbsp;&middot;&nbsp; <a href="tel:+256745558572">0745 558 572</a></div>
+  </div>
+</footer>
+
+<div class="float">
+  <a class="fab wa" href="https://wa.me/256745558572?text=Hello%20MR%20Tech%20Solutions" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg><span>WhatsApp</span></a>
+  <a class="fab ai" href="#ai" aria-label="Ask the AI assistant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 6.600L21 11l-6.600 2.400L12 20l-2.400-6.600L3 11l6.600-2.400z"/></svg><span>Ask AI</span></a>
+</div>
+
+<script>
+  /* ============================================================
+     SETTINGS
+     CONTACT_ENDPOINT (optional): create a free form at formspree.io
+     and paste its URL here so contact-form messages arrive in your
+     inbox. If it is empty, the form opens the visitor's email app.
+     ============================================================ */
+  const CONFIG = {
+    WHATSAPP: "256745558572",
+    EMAIL: "mukiibronald@gmail.com",
+    CONTACT_ENDPOINT: ""
+  };
+
+  const $ = (id) => document.getElementById(id);
+  $("year").textContent = new Date().getFullYear();
+
+  // Mobile menu
+  const menu = $("menu");
+  $("burger").addEventListener("click", () => menu.classList.toggle("open"));
+  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => menu.classList.remove("open")));
+
+  // Photo slider
+  (function () {
+    const track = $("slides");
+    const slides = track.children;
+    const dotsBox = $("dots");
+    const box = $("slider");
+    let i = 0, timer = null;
+    for (let k = 0; k < slides.length; k++) {
+      const b = document.createElement("button");
+      b.setAttribute("aria-label", "Go to slide " + (k + 1));
+      b.addEventListener("click", () => { go(k); restart(); });
+      dotsBox.appendChild(b);
+    }
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      track.style.transform = "translateX(-" + (i * 100) + "%)";
+      [...dotsBox.children].forEach((d, k) => d.classList.toggle("on", k === i));
+    }
+    function restart() { stop(); if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) timer = setInterval(() => go(i + 1), 5000); }
+    function stop() { if (timer) clearInterval(timer); timer = null; }
+    $("next").addEventListener("click", () => { go(i + 1); restart(); });
+    $("prev").addEventListener("click", () => { go(i - 1); restart(); });
+    box.addEventListener("mouseenter", stop);
+    box.addEventListener("mouseleave", restart);
+    let x0 = null;
+    box.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; stop(); }, { passive: true });
+    box.addEventListener("touchend", (e) => {
+      if (x0 !== null) { const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1)); }
+      x0 = null; restart();
+    });
+    go(0); restart();
+  })();
+
+  // Contact form
+  (function () {
+    const form = $("contactForm");
+    const status = $("status");
+    function say(msg) { status.textContent = msg; status.style.display = "block"; }
+    function buildText(f) {
+      const rows = [
+        ["Name", f.name], ["Phone", f.phone], ["Email", f.email], ["Organisation", f.organisation],
+        ["Service", f.service], ["Urgency", f.urgency], ["Preferred contact", f.preferred_contact], ["Location", f.location]
+      ].filter((r) => r[1]).map((r) => r[0] + ": " + r[1]);
+      return "Hello MR Tech Solutions,\n\n" + rows.join("\n") + "\n\nMessage:\n" + (f.message || "");
+    }
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const f = Object.fromEntries(new FormData(form));
+      if (f._gotcha) return;
+      if (CONFIG.CONTACT_ENDPOINT) {
+        try {
+          const r = await fetch(CONFIG.CONTACT_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify(f)
+          });
+          if (!r.ok) throw new Error("bad response");
+          form.reset();
+          say("Thank you! We have received your message and will reply soon.");
+          return;
+        } catch (err) { /* fall through to email */ }
+      }
+      window.location.href = "mailto:" + CONFIG.EMAIL + "?subject=" + encodeURIComponent("Website enquiry: " + (f.service || "")) + "&body=" + encodeURIComponent(buildText(f));
+      say("Your email app should open with your message ready to send. You can also use the WhatsApp button.");
+    });
+    $("waBtn").addEventListener("click", () => {
+      if (!form.reportValidity()) return;
+      const f = Object.fromEntries(new FormData(form));
+      window.open("https://wa.me/" + CONFIG.WHATSAPP + "?text=" + encodeURIComponent(buildText(f)), "_blank", "noopener");
+      say("WhatsApp is opening with your message. Press send there to reach us.");
+    });
+  })();
+
+  // AI chat
+  (function () {
+    const msgsBox = $("msgs");
+    const form = $("chatForm");
+    const input = $("input");
+    const sendBtn = $("send");
+    const suggest = $("suggest");
+    const GREETING = "Hello! I'm the MR Tech Solutions assistant. Ask me anything about cybersecurity, digital forensics, or camera and network installation.";
+    let history = [];
+
+    function esc(t) { return t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+    function inline(t) { return esc(t).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/`([^`]+)`/g, "<code>$1</code>"); }
+    // Tiny safe formatter: paragraphs, bullet lists, **bold**. Everything is escaped first.
+    function render(text) {
+      let html = "", inList = false, para = [];
+      const flush = () => { if (para.length) { html += "<p>" + para.join("<br>") + "</p>"; para = []; } };
+      for (const raw of text.split(/\r?\n/)) {
+        const line = raw.trim();
+        const li = line.match(/^(?:[-*•]|\d+[.)])\s+(.*)$/);
+        if (li) {
+          flush();
+          if (!inList) { html += "<ul>"; inList = true; }
+          html += "<li>" + inline(li[1]) + "</li>";
+        } else {
+          if (inList) { html += "</ul>"; inList = false; }
+          if (line === "") flush(); else para.push(inline(line));
+        }
+      }
+      flush();
+      if (inList) html += "</ul>";
+      return html;
+    }
+
+    function add(text, who, extra) {
+      const d = document.createElement("div");
+      d.className = "msg " + who + (extra ? " " + extra : "");
+      if (who === "bot") d.innerHTML = render(text); else d.textContent = text;
+      msgsBox.appendChild(d);
+      msgsBox.scrollTop = msgsBox.scrollHeight;
+      return d;
+    }
+    function typingBubble() {
+      const d = document.createElement("div");
+      d.className = "msg bot typing";
+      d.innerHTML = "<span></span><span></span><span></span>";
+      d.setAttribute("aria-label", "The assistant is typing");
+      msgsBox.appendChild(d);
+      msgsBox.scrollTop = msgsBox.scrollHeight;
+      return d;
+    }
+    function reset() {
+      history = [];
+      msgsBox.innerHTML = "";
+      add(GREETING, "bot");
+      suggest.style.display = "flex";
+    }
+
+    async function ask(text) {
+      suggest.style.display = "none";
+      add(text, "user");
+      history.push({ role: "user", content: text });
+      sendBtn.disabled = true;
+      input.disabled = true;
+      const typing = typingBubble();
+      const ctrl = new AbortController();
+      const to = setTimeout(() => ctrl.abort(), 60000);
+      try {
+        const r = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: history }),
+          signal: ctrl.signal
+        });
+        const data = await r.json();
+        typing.remove();
+        if (data.reply) {
+          history.push({ role: "assistant", content: data.reply });
+          add(data.reply, "bot");
+        } else {
+          history.pop();
+          add(data.error || "Something went wrong. Please try again.", "bot", "err");
+        }
+      } catch (e) {
+        typing.remove();
+        history.pop();
+        add("I could not reach the assistant right now. Please try again, or call or WhatsApp us on 0745 558 572.", "bot", "err");
+      } finally {
+        clearTimeout(to);
+        sendBtn.disabled = false;
+        input.disabled = false;
+        input.focus();
+      }
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const t = input.value.trim();
+      if (!t) return;
+      input.value = "";
+      ask(t);
+    });
+    suggest.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => ask(b.textContent)));
+    $("clearChat").addEventListener("click", reset);
+    reset();
+  })();
+</script>
+
+</body>
+</html>
