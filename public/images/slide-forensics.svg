@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#14305a"/></linearGradient>
+    <radialGradient id="glow"><stop offset="0" stop-color="#3b82f6" stop-opacity=".3"/><stop offset="1" stop-color="#3b82f6" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <circle cx="560" cy="330" r="340" fill="url(#glow)"/>
+  <!-- disk -->
+  <circle cx="420" cy="340" r="205" fill="#0f1d36" stroke="#2d4a73" stroke-width="5"/>
+  <g fill="none" stroke="#2d4a73" stroke-width="3">
+    <circle cx="420" cy="340" r="160"/><circle cx="420" cy="340" r="115"/><circle cx="420" cy="340" r="70"/>
+  </g>
+  <path d="M420 340 L420 135 A205 205 0 0 1 565 195 Z" fill="#22d3a6" opacity=".18"/>
+  <circle cx="420" cy="340" r="28" fill="#22d3a6"/><circle cx="420" cy="340" r="10" fill="#0b1220"/>
+  <!-- data bars -->
+  <g fill="#22d3a6" opacity=".4">
+    <rect x="130" y="590" width="220" height="12" rx="6"/><rect x="130" y="615" width="140" height="12" rx="6"/>
+    <rect x="380" y="590" width="170" height="12" rx="6"/><rect x="380" y="615" width="250" height="12" rx="6"/>
+  </g>
+  <!-- magnifier -->
+  <circle cx="760" cy="300" r="135" fill="#22d3a6" fill-opacity=".1" stroke="#22d3a6" stroke-width="18"/>
+  <line x1="858" y1="396" x2="990" y2="528" stroke="#22d3a6" stroke-width="32" stroke-linecap="round"/>
+  <g fill="none" stroke="#22d3a6" stroke-width="5" stroke-linecap="round" opacity=".9">
+    <path d="M722 335 a40 40 0 0 1 76 0"/><path d="M700 350 a62 62 0 0 1 120 0"/>
+    <path d="M680 365 a82 82 0 0 1 160 0"/><path d="M742 322 a20 20 0 0 1 36 0"/>
+    <path d="M722 335 v22"/><path d="M798 335 v22"/><path d="M760 322 v34"/>
+  </g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#123a63"/></linearGradient>
+    <linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3a6"/><stop offset="1" stop-color="#3b82f6"/></linearGradient>
+    <radialGradient id="glow"><stop offset="0" stop-color="#22d3a6" stop-opacity=".35"/><stop offset="1" stop-color="#22d3a6" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <circle cx="600" cy="330" r="320" fill="url(#glow)"/>
+  <g stroke="#2d4a73" stroke-width="2" fill="none">
+    <path d="M600 330 L180 140 L90 140"/><path d="M600 330 L260 520 L140 560"/>
+    <path d="M600 330 L980 120 L1100 110"/><path d="M600 330 L1040 490 L1120 560"/>
+    <path d="M600 330 L110 340"/><path d="M600 330 L1110 320"/>
+    <path d="M180 140 L110 340"/><path d="M980 120 L1110 320"/><path d="M260 520 L110 340"/><path d="M1040 490 L1110 320"/>
+  </g>
+  <g fill="#22d3a6">
+    <circle cx="180" cy="140" r="10"/><circle cx="260" cy="520" r="10"/><circle cx="980" cy="120" r="10"/>
+    <circle cx="1040" cy="490" r="10"/><circle cx="110" cy="340" r="10"/><circle cx="1110" cy="320" r="10"/>
+  </g>
+  <g fill="#3b82f6" opacity=".8">
+    <circle cx="90" cy="140" r="6"/><circle cx="140" cy="560" r="6"/><circle cx="1100" cy="110" r="6"/><circle cx="1120" cy="560" r="6"/>
+  </g>
+  <path d="M600 110 L790 185 V335 C790 460 710 545 600 590 C490 545 410 460 410 335 V185 Z" fill="url(#sh)"/>
+  <path d="M600 110 L790 185 V335 C790 460 710 545 600 590 Z" fill="#0b1220" opacity=".16"/>
+  <rect x="545" y="325" width="110" height="90" rx="12" fill="#0b1220"/>
+  <path d="M570 325 V298 a30 30 0 0 1 60 0 V325" fill="none" stroke="#0b1220" stroke-width="16"/>
+  <circle cx="600" cy="360" r="10" fill="#22d3a6"/><rect x="595" y="364" width="10" height="28" rx="3" fill="#22d3a6"/>
+</svg>
