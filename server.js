@@ -2,18 +2,20 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const rateLimit = require("express-rate-limit");
+const { GoogleGenAI } = require("@google/genai");
 
 const PORT = process.env.PORT || 3000;
 const MODEL = process.env.MODEL || "gemini-2.5-flash";
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
-const DAILY_LIMIT = parseInt(process.env.DAILY_LIMIT || "200", 10); // max AI answers per day, protects the free quota
+const DAILY_LIMIT = parseInt(process.env.DAILY_LIMIT || "500", 10);
 
-if (!GEMINI_API_KEY) {
-  console.warn("WARNING: GEMINI_API_KEY is not set. The website will load, but the AI assistant will not answer until you add it.");
+if (!process.env.GEMINI_API_KEY) {
+  console.warn("WARNING: GEMINI_API_KEY is not set.");
 }
 
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "missing" });
+
 const app = express();
-app.set("trust proxy", 1); // hosts like Render/Railway sit behind a proxy; needed for per-visitor rate limits
+app.set("trust proxy", 1);
 app.disable("x-powered-by");
 app.use(express.json({ limit: "20kb" }));
 
@@ -34,7 +36,6 @@ app.use(
 
 app.get("/health", (req, res) => res.json({ ok: true }));
 
-// 20 questions per visitor every 10 minutes.
 app.use(
   "/api/",
   rateLimit({
@@ -46,7 +47,6 @@ app.use(
   })
 );
 
-// Overall daily cap.
 let capDay = new Date().toISOString().slice(0, 10);
 let capCount = 0;
 function underDailyCap() {
@@ -92,20 +92,17 @@ app.post("/api/chat", async (req, res) => {
       return res.status(400).json({ error: "Please type a question." });
     }
 
-    // Keep only valid roles and text, the last 20 turns, and make sure the chat starts and ends with the visitor.
     let clean = messages
       .filter((m) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string" && m.content.trim())
       .slice(-20)
-      .map((m) => ({ role: m.role, content: m.content.slice(0, 4000) }));
+      .map((m) => ({
+        role: m.role === "assistant" ? "model" : "user",
+        parts: [{ text: m.content.slice(0, 4000) }]
+      }));
+
     while (clean.length && clean[0].role !== "user") clean.shift();
     if (clean.length === 0 || clean[clean.length - 1].role !== "user") {
       return res.status(400).json({ error: "Please type a question." });
-    }
-
-    if (!GEMINI_API_KEY) {
-      return res.status(500).json({
-        error: "The assistant is not set up yet. Please call or WhatsApp us on 0745 558 572.",
-      });
     }
 
     if (!underDailyCap()) {
@@ -114,52 +111,16 @@ app.post("/api/chat", async (req, res) => {
       });
     }
 
-    // Gemini uses the role name "model" instead of "assistant".
-    const contents = clean.map((m) => ({
-      role: m.role === "assistant" ? "model" : "user",
-      parts: [{ text: m.content }],
-    }));
-
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(MODEL)}:generateContent`;
-    const apiRes = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-goog-api-key": GEMINI_API_KEY, // stays on the server, never sent to the visitor
-      },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-        contents,
-        generationConfig: {
-          maxOutputTokens: 1000,
-          temperature: 0.6,
-          thinkingConfig: { thinkingBudget: 0 }, // short answers, saves your free quota
-        },
-      }),
+    const response = await ai.models.generateContent({
+      model: MODEL,
+      contents: clean,
+      config: {
+        systemInstruction: SYSTEM_PROMPT,
+        maxOutputTokens: 1000,
+      }
     });
 
-    if (!apiRes.ok) {
-      const detail = await apiRes.text().catch(() => "");
-      console.error("Gemini error:", apiRes.status, detail.slice(0, 500));
-      if (apiRes.status === 429) {
-        return res.status(429).json({
-          error: "The assistant is busy right now. Please try again in a minute, or call or WhatsApp us on 0745 558 572.",
-        });
-      }
-      if (apiRes.status === 400 || apiRes.status === 401 || apiRes.status === 403) {
-        console.error("The API key or model was rejected. Check GEMINI_API_KEY and MODEL in your environment settings.");
-      }
-      return res.status(500).json({
-        error: "The assistant is unavailable right now. Please try again shortly, or call or WhatsApp us on 0745 558 572.",
-      });
-    }
-
-    const data = await apiRes.json();
-    const parts = (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) || [];
-    const reply = parts
-      .map((p) => p.text || "")
-      .join("")
-      .trim();
+    const reply = response.text ? response.text.trim() : "";
 
     res.json({ reply: reply || "Sorry, I could not come up with an answer. Please try asking in a different way." });
   } catch (err) {
@@ -168,8 +129,6 @@ app.post("/api/chat", async (req, res) => {
   }
 });
 
-// Run a normal server on your own computer / Render / Railway.
-// On Vercel the app is exported instead and Vercel runs it.
 if (require.main === module) {
   app.listen(PORT, () => console.log(`MR Tech Solutions running at http://localhost:${PORT}`));
 }
